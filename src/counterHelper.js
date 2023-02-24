@@ -17,10 +17,13 @@ export const counter = createSlice({
     kurang: (state) => {
       state.nilai -= 1;
     },
+    reset: (state) => {
+      state.nilai = 0;
+    },
   },
 });
 
 // export aksi tambah dan kurang
-export const { tambah, kurang } = counter.actions;
+export const { tambah, kurang, reset } = counter.actions;
 // export reducer
 export default counter.reducer;
