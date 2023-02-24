@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+// memanggil aksi reducer tambah dan kurang
+import { tambah, kurang } from "./counterHelper";
 
-function App() {
+const App = () => {
+  // untuk mengakses redux store
+  const count = useSelector((state) => state.counter.nilai);
+  // untuk memberikan aksi pada reducer
+  const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {count}
+      <br></br>
+      <button onClick={() => dispatch(tambah())}>Tambah</button>
+      <button onClick={() => dispatch(kurang())}>Kurang</button>
+    </>
   );
-}
+};
 
 export default App;
